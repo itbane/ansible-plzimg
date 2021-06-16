@@ -1,0 +1,10 @@
+---
+plzimg__python_dependencies:
+  - flask
+  - pillow
+plzimg__git_url: "https://github.com/itbane/plzimg"
+plzimg__git_version: "master"
+
+plzimg__deployment_dir: "/usr/local/lib"
+plzimg__data_dir: "{{ plzimg__deployment_dir }}/plzimg"
+...

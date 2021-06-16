@@ -1,0 +1,28 @@
+---
+- name: Clone the application from github
+  ansible.builtin.git:
+    repo: "{{ plzimg__git_url }}"
+    dest: "{{ plzimg__deployment_dir }}/plzimg"
+    version: "{{ plzimg__git_version }}"
+- name: Create the virtualenv for plzimg
+  ansible.builtin.pip:
+    name: "{{ plzimg__python_dependencies }}"
+    virtualenv: "{{ plzimg__deployment_dir }}/plzimg"
+    virtualenv_command: "python3.9 -m venv"
+- name: Create the user for data dir
+  ansible.builtin.user:
+    name: plzimg
+    create_home: false
+    shell: /bin/nologin
+    system: true
+- name: Create the data directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: 0755
+    owner: plzimg
+    group: plzimg
+    state: directory
+  with_items:
+    - "{{ plzimg__data_dir }}/o"
+    - "{{ plzimg__data_dir }}/s"
+...
