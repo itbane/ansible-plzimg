@@ -4,6 +4,8 @@ An ansible-role to manage a plzimg configuration
 
 ## Variables
 
+| variable | default | description |
+| -------- | ------- | ----------- |
 | plzimg__python_dependencies | [flask,pillow] | Python packages that need to be installed (via pip) |
 | plzimg__git_url | https://github.com/itbane/plzimg | git repo to pull the app from |
 | plzimg__git_version | `master` | git version to pull |
